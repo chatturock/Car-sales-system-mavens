@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.carsales.CarServiceTest" time="0.136" tests="17" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.carsales.CarServiceTest" time="0.152" tests="17" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\CHATTA NATHAN ARUN\AppData\Local\Temp\surefire6804410150774602280\surefirebooter-20261007154654175_3.jar C:\Users\CHATTA NATHAN ARUN\AppData\Local\Temp\surefire6804410150774602280 2026-10-07T15-46-53_635-jvmRun1 surefire-20261007154654175_1tmp surefire_0-20261007154654175_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\CHATTA NATHAN ARUN\AppData\Local\Temp\surefire3316612319752572203\surefirebooter-20261007155932298_3.jar C:\Users\CHATTA NATHAN ARUN\AppData\Local\Temp\surefire3316612319752572203 2026-10-07T15-59-31_993-jvmRun1 surefire-20261007155932298_1tmp surefire_0-20261007155932298_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\CHATTA NATHAN ARUN\Documents\GitHub\Car sales system amvens\target\test-classes;C:\Users\CHATTA NATHAN ARUN\Documents\GitHub\Car sales system amvens\target\classes;C:\Users\CHATTA NATHAN ARUN\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\CHATTA NATHAN ARUN\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\CHATTA NATHAN ARUN\AppData\Local\Temp\surefire6804410150774602280\surefirebooter-20261007154654175_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\CHATTA NATHAN ARUN\AppData\Local\Temp\surefire3316612319752572203\surefirebooter-20261007155932298_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.7+8-LTS-245"/>
@@ -58,21 +58,21 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testBookNonExistingCar" classname="com.carsales.CarServiceTest" time="0.008"/>
+  <testcase name="testBookNonExistingCar" classname="com.carsales.CarServiceTest" time="0.011"/>
   <testcase name="testDuplicateCarId" classname="com.carsales.CarServiceTest" time="0.0"/>
   <testcase name="testCannotBookAlreadyBookedCar" classname="com.carsales.CarServiceTest" time="0.0"/>
   <testcase name="testCancelBooking" classname="com.carsales.CarServiceTest" time="0.0"/>
   <testcase name="testAvailableCarCount" classname="com.carsales.CarServiceTest" time="0.0"/>
   <testcase name="testSearchByBrand" classname="com.carsales.CarServiceTest" time="0.0"/>
   <testcase name="testSearchByModel" classname="com.carsales.CarServiceTest" time="0.0"/>
-  <testcase name="testSearchByBrandCaseInsensitive" classname="com.carsales.CarServiceTest" time="0.0"/>
-  <testcase name="testBookCar" classname="com.carsales.CarServiceTest" time="0.0"/>
+  <testcase name="testSearchByBrandCaseInsensitive" classname="com.carsales.CarServiceTest" time="0.001"/>
+  <testcase name="testBookCar" classname="com.carsales.CarServiceTest" time="0.001"/>
   <testcase name="testSearchByMaxPrice" classname="com.carsales.CarServiceTest" time="0.0"/>
   <testcase name="testDeleteNonExistingCar" classname="com.carsales.CarServiceTest" time="0.0"/>
-  <testcase name="testDeleteCar" classname="com.carsales.CarServiceTest" time="0.004"/>
-  <testcase name="testFindCarById" classname="com.carsales.CarServiceTest" time="0.0"/>
-  <testcase name="testAddCar" classname="com.carsales.CarServiceTest" time="0.001"/>
-  <testcase name="testCannotCancelAvailableCar" classname="com.carsales.CarServiceTest" time="0.0"/>
-  <testcase name="testFindNonExistingCar" classname="com.carsales.CarServiceTest" time="0.0"/>
+  <testcase name="testDeleteCar" classname="com.carsales.CarServiceTest" time="0.001"/>
+  <testcase name="testFindCarById" classname="com.carsales.CarServiceTest" time="0.001"/>
+  <testcase name="testAddCar" classname="com.carsales.CarServiceTest" time="0.0"/>
+  <testcase name="testCannotCancelAvailableCar" classname="com.carsales.CarServiceTest" time="0.001"/>
+  <testcase name="testFindNonExistingCar" classname="com.carsales.CarServiceTest" time="0.001"/>
   <testcase name="testNullCar" classname="com.carsales.CarServiceTest" time="0.0"/>
 </testsuite>
