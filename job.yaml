@@ -1,0 +1,19 @@
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: car-sales-system-job
+spec:
+  completions: 1
+  parallelism: 1
+  backoffLimit: 0
+  template:
+    metadata:
+      labels:
+        app: car-sales-system-job
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: car-sales-system
+          image: chattanathana/car-sales-system-kubernetes:latest
+          imagePullPolicy: Always
