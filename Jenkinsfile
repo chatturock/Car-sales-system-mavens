@@ -1,88 +1,102 @@
-pipeline {
 
+pipeline {
     agent any
 
     tools {
         maven 'Maven'
     }
 
+    environment {
+        DOCKER_IMAGE = 'chattanathana/car-sales-system-kubernetes:latest'
+    }
+
     stages {
-
         stage('Checkout') {
-
             steps {
-
-                echo 'Checking out source code...'
-
+                echo 'Checking out Car Sales System from GitHub...'
                 git branch: 'main',
                     url: 'https://github.com/chatturock/Car-sales-system-mavens'
             }
         }
 
         stage('Maven Clean') {
-
             steps {
-
-                echo 'Cleaning previous Maven build...'
-
                 bat 'mvn clean'
             }
         }
 
         stage('Compile') {
-
             steps {
-
-                echo 'Compiling Java source code...'
-
                 bat 'mvn compile'
             }
         }
 
         stage('Test') {
-
             steps {
-
-                echo 'Running JUnit tests...'
-
                 bat 'mvn test'
             }
         }
 
         stage('Package') {
-
             steps {
-
-                echo 'Creating Maven package...'
-
                 bat 'mvn package'
+                bat 'if not exist target\\car-sales-system-1.0-SNAPSHOT.jar exit /b 1'
             }
         }
 
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t %DOCKER_IMAGE% .'
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-creds',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    bat '''
+                        @echo off
+                        echo %DOCKER_PASS% | docker login -u %DOCKER_USER% --password-stdin
+                        if errorlevel 1 exit /b 1
+                        docker push %DOCKER_IMAGE%
+                        if errorlevel 1 exit /b 1
+                    '''
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                bat '''
+                    kubectl config current-context
+                    kubectl apply -f deployment.yaml
+                    kubectl rollout status deployment/car-sales-system --timeout=180s
+                '''
+            }
+        }
+
+        stage('Verify Deployment') {
+            steps {
+                bat 'kubectl get deployments,pods,services'
+            }
+        }
     }
 
     post {
-
         success {
-
-            echo '======================================'
-            echo 'BUILD SUCCESS'
-            echo 'Maven build completed successfully.'
-            echo 'All tests passed.'
-            echo '======================================'
+            echo 'Car Sales System CI/CD pipeline completed successfully!'
         }
 
         failure {
-
-            echo '======================================'
-            echo 'BUILD FAILED'
-            echo 'Please check the Jenkins console output.'
-            echo '======================================'
+            echo 'Pipeline failed. Check the Jenkins Console Output.'
         }
 
         always {
-
-            echo 'Jenkins pipeline execution completed.'
+            bat 'docker logout'
+            echo 'Pipeline execution finished.'
         }
     }
 }

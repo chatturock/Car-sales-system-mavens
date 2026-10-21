@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: car-sales-system
-          image: chattanathana/car-sales-system:latest
+          image: chattanathana/car-sales-system-kubernetes:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -29,6 +29,7 @@ spec:
   selector:
     app: car-sales-system
   ports:
-    - port: 80
+    - protocol: TCP
+      port: 80
       targetPort: 8080
       nodePort: 30007
