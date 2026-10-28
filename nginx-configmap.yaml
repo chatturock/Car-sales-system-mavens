@@ -1,0 +1,9 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  APP_NAME: "NGINX Demo Application"
+  APP_ENV: "Development"
+  MESSAGE: "ConfigMap deployed using Jenkins"
