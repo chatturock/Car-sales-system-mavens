@@ -1,0 +1,25 @@
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: storage-test-pod
+  labels:
+    app: storage-test
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          echo "Persistent storage created by Jenkins" > /usr/share/nginx/html/storage/test.txt
+          nginx -g 'daemon off;'
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: app-storage
+          mountPath: /usr/share/nginx/html/storage
+  volumes:
+    - name: app-storage
+      persistentVolumeClaim:
+        claimName: app-storage-pvc
